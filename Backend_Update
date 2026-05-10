@@ -1,0 +1,25 @@
+from main folder
+cd backend
+
+then
+
+npm install
+
+to install all node_modules needed from the updated dependencies
+
+
+
+make .env file and paste this
+DATABASE_URI=mongodb://127.0.0.1:27017/armztrongGym
+ACCESS_TOKEN_SECRET=1313b738329008ca7bbc07bc5d313dfcea200b1055799e6f9362f94bf80a07572951ef213653d6a53b1b463b1455c72f549e3a5831eb83570b98bb21bfbb69cc
+REFRESH_TOKEN_SECRET=1313b738329008ca7bbc07bc5d313dfcea200b1055799e6f9362f94bf80a07572951ef213653d6a53b1b463b1455c72f549e3a5831eb83570b98bb21bfbb69cc
+
+
+after that, add .gitignore
+write node_modules inside gitignore to prevent uploading the libraries
+
+
+Try installing mongodb in official mongodb website and MongoDb extension in Vscode
+
+
+I will start making functional routes after Login and Signup page
