@@ -7,6 +7,7 @@ import connectDB from "./config/dbNoteApp";
 import corsOptions from "./config/corsOptions";
 //import adminRoutes from "./routes/admins";
 //import userRoutes from "./routes/users";
+import authRoute from "./routes/auth"
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 // Routes
 //app.use("/admins", adminRoutes);
 //app.use("/users", userRoutes);
+app.use("/auth", authRoute);
 
 // Start server once MongoDB is connected
 mongoose.connection.once("open", () => {
