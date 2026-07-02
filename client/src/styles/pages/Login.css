@@ -1,0 +1,71 @@
+/* Entire page */
+.login-page {
+    color: #333;
+}
+
+/* Centers the card on the page */
+.login-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Card */
+.login-card {
+    width: 100%;
+    min-height: 400px;
+    max-width: 300px;
+    border: 2px solid #090000;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+/* Header */
+.login-card__header {
+    margin-bottom: 4rem;
+}
+
+.login-card__header h1 {
+    margin: 0;
+}
+
+/* Body */
+.login-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-input {
+    min-width: 250px;
+    min-height: 30px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.form-actions {
+    margin-top: 1rem;
+}
+
+.login-button {
+    width: 100%;
+    padding: 0.8rem;
+}
