@@ -1,71 +1,154 @@
-/* Entire page */
+/* src/styles/pages/Login.css */
+
+/* Entire page background & text baseline */
 .login-page {
     color: #333;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f9f9f9; /* Soft background to make the white card pop */
 }
 
-/* Centers the card on the page */
+/* Centers the card perfectly on the screen */
 .login-container {
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-/* Card */
+/* The Login Card Container */
 .login-card {
     width: 100%;
     min-height: 400px;
     max-width: 300px;
-    border: 2px solid #090000;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; /* Subtle border */
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Softer, modern shadow drop */
+    padding: 2.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Header */
+/* Header Section */
 .login-card__header {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-card__header h1 {
     margin: 0;
+    font-size: 1.7rem; /* Slightly reduced to comfortably fit "Welcome To Note App" */
+    font-weight: 600;
+    text-align: center;
 }
 
-/* Body */
+/* Body Area wrapping the form */
 .login-card__body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
-/* Form */
+/* Form Layout */
 .login-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    width: 100%;
 }
 
 .form-fields {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.2rem; /* Balanced spacing between inputs */
 }
 
+/* Input Fields Styling */
 .form-input {
-    min-width: 250px;
-    min-height: 30px;
-    padding: 0.5rem;
+    width: 100%; /* Spans full card body safely */
+    min-height: 40px; 
+    padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-radius: 20px;
+    box-sizing: border-box; /* Crucial: ensures padding doesn't break layout width */
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Accent highlight when user clicks an input */
+.form-input:focus {
+    outline: none;
+    border-color: #0076ff;
+    box-shadow: 0 0 0 3px rgba(0, 118, 255, 0.15);
 }
 
 .form-actions {
     margin-top: 1rem;
 }
 
+/* Error message styling */
+.form-error {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* Primary Submission Button */
 .login-button {
     width: 100%;
     padding: 0.8rem;
+    border: none; /* Removes default browser styling */
+    border-radius: 20px;
+    background-color: #333; /* Dark clean theme button */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer; 
+    transition: background-color 0.2s;
+}
+
+/* Hover effect for interactive feedback */
+.login-button:hover {
+    background-color: #555;
+}
+
+/* Footer Container */
+.login-card__footer {
+    margin-top: 1.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+/* The Horizontal Line above the sign up text */
+.footer-divider {
+    border: none;
+    border-top: 1px solid #e0e0e0; /* Clean, thin gray divider line */
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+/* Signup Text Wrapper */
+.signup-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Interactive Link Element */
+.signup-link {
+    color: #0076ff; /* Clean branding blue */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+/* Subtle hover effect for the link */
+.signup-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
