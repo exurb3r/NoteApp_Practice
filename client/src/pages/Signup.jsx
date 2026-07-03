@@ -3,39 +3,35 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../styles/pages/Signup.css"; // Imports our layout structure stylesheet
+import handleSignup from '../services/auths'; // Imports our signup service function
 
 export default function Signup() {
+
   // 1. STATE MANAGEMENT (Memory slots tracking input entries in real time)
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [firstName, setFirstName] = useState('admin');
+  const [lastName, setLastName] = useState('admin');
+  const [email, setEmail] = useState('test@gmail.com');
+  const [username, setUsername] = useState('admin');
+  const [password, setPassword] = useState('123');
+  const [confirmPassword, setConfirmPassword] = useState('123');
   const [error, setError] = useState(''); // Holds system or validation error strings
+  const [loading, setLoading] = useState(false); // FIXED: Added missing loading state
 
   // 2. ROUTING HOOK: Activating our steering wheel tool to programmatically change URLs
   const navigate = useNavigate();
 
-  // 3. HANDLER FUNCTION: Runs immediately when form submit is triggered
-  const handleSignup = (e) => {
-    // e.preventDefault() stops the browser from doing a full page refresh
-    e.preventDefault(); 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setError(''); // Clear any previous error messages
+    setLoading(true); // Set loading state to true while processing
     
-    // Clears older validation messages to start a clean check
-    setError('');       
-
-    // PASSWORD CHECK: Safely verifies if both password fields match perfectly
-    if (password !== confirmPassword) {
-      setError('Passwords do not match. Please verify your typing.');
-      return; // Breaks function execution early so account is not processed
+    try {
+        await handleSignup(e, firstName, lastName, email, username, password, confirmPassword, setError, navigate);
+    } catch (error) {
+        setError('An error occurred while fetching data. Please try again.');
+    } finally {
+        setLoading(false);
     }
-
-    // Success action placeholder
-    alert('Account created successfully! Redirecting to login...');
-    
-    // Takes the user back to the login route screen so they can test their new account
-    navigate('/login'); 
   };
 
   return (
@@ -53,8 +49,8 @@ export default function Signup() {
 
           {/* Card Form Body Area */}
           <div className="signup-card__body">
-            {/* onSubmit links the interactive button click to our execution brain block */}
-            <form onSubmit={handleSignup} className="signup-form">
+            {/* FIXED: Changed onSubmit from handleSignup to your local onSubmit function */}
+            <form onSubmit={onSubmit} className="signup-form">
               
               {/* CONDITIONAL RENDERING: If error state has text, render this warning box immediately */}
               {error && (
@@ -130,9 +126,9 @@ export default function Signup() {
 
               {/* Form Submission Action Box */}
               <div className="form-actions">
-                {/* type="submit" instructs the form wrapper to fire our handleSignup function */}
-                <button type="submit" className="signup-button">
-                  Create Account
+                {/* Visual bonus: Disable the button while sending data */}
+                <button type="submit" className="signup-button" disabled={loading}>
+                  {loading ? 'Creating Account...' : 'Create Account'}
                 </button>
               </div>
 
