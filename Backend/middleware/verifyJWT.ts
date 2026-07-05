@@ -1,33 +1,29 @@
 import { Request, Response, NextFunction } from "express";
-import jwt,{ JwtPayload } from "jsonwebtoken";
-import type { AuthUser } from "./types.verifyJWT";
+import jwt from "jsonwebtoken";
+import type { JwtUserPayload } from "../types/types.verifyJWT";
 
+const verifyJWT = (req: Request, res: Response, next: NextFunction): void => {
+    const token = req.cookies?.token;
 
-const verifyJWT = ( req: Request, res: Response, next: NextFunction ) : void=> {
-    const authHeader = req.headers.authorization;
-    if( !authHeader ) {
+    if (!token) {
         res.sendStatus(401);
-        return
+        return;
     }
 
-    const token = authHeader.split(" ")[1];
+    const secret = process.env.ACCESS_TOKEN_SECRET;
+    if (!secret) {
+        res.sendStatus(500);
+        return;
+    }
 
-    jwt.verify(
-        token,
-        process.env.ACCESS_TOKEN_SECRET as string,
-        (err, decoded) => {
-            console.log("SECRET:", process.env.ACCESS_TOKEN_SECRET);
-            console.log("ERROR:", err?.message);
-                console.log("DECODED:", decoded);
-            if (err) {
-                res.sendStatus(403);
-                return;
-            }
-            req.user = decoded as AuthUser;
-            next();
+    jwt.verify(token, secret, (err: any, decoded: any) => {
+        if (err) {
+            res.sendStatus(403);
+            return;
         }
-    )
-        
-}
+        req.user = decoded as JwtUserPayload;
+        next();
+    });
+};
 
 export default verifyJWT;
