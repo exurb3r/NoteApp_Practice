@@ -3,36 +3,47 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../styles/pages/Signup.css"; // Imports our layout structure stylesheet
-import handleSignup from '../services/auths'; // Imports our signup service function
+import { handleSignup } from '../services/auth'; // Imports our signup service function
 
 export default function Signup() {
 
-  // 1. STATE MANAGEMENT (Memory slots tracking input entries in real time)
-  const [firstName, setFirstName] = useState('admin');
-  const [lastName, setLastName] = useState('admin');
-  const [email, setEmail] = useState('test@gmail.com');
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('123');
-  const [confirmPassword, setConfirmPassword] = useState('123');
-  const [error, setError] = useState(''); // Holds system or validation error strings
-  const [loading, setLoading] = useState(false); // FIXED: Added missing loading state
+// Inside src/pages/Signup.jsx
+// Swap your short test strings with clean, compliant test values!
+
+const [firstName, setFirstName] = useState('Admin');
+const [lastName, setLastName] = useState('User');
+const [email, setEmail] = useState('admin@test.com'); // Valid email string format
+const [username, setUsername] = useState('admin123');
+const [password, setPassword] = useState('SecurePassword@123'); // Satisfies .min() conditions
+const [confirmPassword, setConfirmPassword] = useState('SecurePassword@123');
+const [error, setError] = useState('');
+const [loading, setLoading] = useState(false); // Tracks if the form is currently submitting
 
   // 2. ROUTING HOOK: Activating our steering wheel tool to programmatically change URLs
   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setError(''); // Clear any previous error messages
-    setLoading(true); // Set loading state to true while processing
-    
-    try {
-        await handleSignup(e, firstName, lastName, email, username, password, confirmPassword, setError, navigate);
-    } catch (error) {
-        setError('An error occurred while fetching data. Please try again.');
-    } finally {
+ // inside src/pages/Signup.jsx
+
+const onSubmit = async (e) => {
+  e.preventDefault(); // Keep preventDefault here! It belongs to the form event.
+  setError(''); 
+  setLoading(true); 
+  
+      // Package everything cleanly
+      const payload = {
+        data: { firstName, lastName, email, username, password, confirmPassword },
+        setError,
+        navigate
+      };
+
+      try {
+        await handleSignup(payload);
+      } catch (err) {
+        setError('An unexpected error occurred. Please try again.');
+      } finally {
         setLoading(false);
-    }
-  };
+      }
+};
 
   return (
     // Outer baseline full-page layout centering container
