@@ -6,18 +6,12 @@ import Sidebar from '../components/Sidebar';
 
 export default function MainLayout() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {/* Top persistent block */}
+    <div className="main-layout">
       <Navbar />
-
-      {/* Main workspace grouping structural elements horizontally */}
-      <div style={{ display: 'flex', flex: 1 }}>
-        {/* Left fixed block */}
+      <div className="main-layout__content">
         <Sidebar />
-
-        {/* Dynamic page viewport content injections */}
-        <main style={{ flex: 1, padding: '30px', background: '#fff' }}>
-          <Outlet />
+        <main className="main-layout__main">
+          <Outlet /> {/* This is where the child routes will be rendered */}
         </main>
       </div>
     </div>

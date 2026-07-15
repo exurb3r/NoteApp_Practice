@@ -2,9 +2,9 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
-import Home from '../pages/Main'; 
+import Home from '../pages/PersonalNotes'; 
 import MainLayout from '../layouts/MainLayout'; 
-import MainPage from '../pages/Main';
+import MainPage from '../pages/PersonalNotes';
 
 
 const ProtectedRoute = () => {

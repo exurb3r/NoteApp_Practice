@@ -6,9 +6,7 @@ import "../styles/pages/Login.css";
 export default function MainPage() {
     return (
         <div>
-            <Helmet>
-                <title>Home</title>
-            </Helmet>
+          
         </div>
     )
 }
