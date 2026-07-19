@@ -2,6 +2,8 @@
 
 import React from "react";
 import "../styles/components/sidebar.css";
+import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 import {
   FaHome,
@@ -14,59 +16,107 @@ import {
 } from "react-icons/fa";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  function handleButtonClick(buttonName) {
+    console.log(buttonName);
+  }
+
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
         <h3>NoteApp</h3>
       </div>
 
+      {/* Dashboard */}
       <div className="sidebar-section">
-        <button className="sidebar-item">
+        <Button
+          className="sidebar-item"
+          onClick={() => {
+            handleButtonClick("Dashboard");
+            navigate("/noteapp");
+          }}
+        >
           <FaHome className="sidebar-icon" />
           <span>Dashboard</span>
-        </button>
+        </Button>
       </div>
 
+      {/* Notes */}
       <div className="sidebar-section">
         <p className="sidebar-heading">NOTES</p>
 
-        <button className="sidebar-item">
+        <Button
+          className="sidebar-item"
+          onClick={() => {
+            handleButtonClick("Personal Notes");
+            navigate("/noteapp");
+          }}
+        >
           <FaStickyNote className="sidebar-icon" />
           <span>Personal Notes</span>
-        </button>
+        </Button>
 
-        <button className="sidebar-item">
+        <Button
+          className="sidebar-item"
+          onClick={() => {
+            handleButtonClick("Community Notes");
+            navigate("/noteapp/community-notes");
+          }}
+        >
           <FaUsers className="sidebar-icon" />
           <span>Community Notes</span>
-        </button>
+        </Button>
       </div>
 
+      {/* Account */}
       <div className="sidebar-section">
         <p className="sidebar-heading">ACCOUNT</p>
 
-        <button className="sidebar-item">
+        <Button
+          className="sidebar-item"
+          onClick={() => {
+            handleButtonClick("Profile");
+            navigate("/noteapp/profile");
+          }}
+        >
           <FaUser className="sidebar-icon" />
           <span>Profile</span>
-        </button>
+        </Button>
 
-        <button className="sidebar-item">
+        <Button
+          className="sidebar-item"
+          onClick={() => {
+            handleButtonClick("Notifications");
+            navigate("/noteapp/notifications");
+          }}
+        >
           <FaBell className="sidebar-icon" />
           <span>Notifications</span>
-        </button>
+        </Button>
 
-        <button className="sidebar-item">
+        <Button
+          className="sidebar-item"
+          onClick={() => {
+            handleButtonClick("Stats & Activities");
+            navigate("/noteapp/stats-activities");
+          }}
+        >
           <FaChartBar className="sidebar-icon" />
           <span>Stats & Activity</span>
-        </button>
+        </Button>
       </div>
 
       <hr className="sidebar-divider" />
 
       <div className="sidebar-section">
-        <button className="sidebar-item">
+        <Button
+          className="sidebar-item"
+          onClick={() => handleButtonClick("More")}
+        >
           <FaEllipsisH className="sidebar-icon" />
           <span>More</span>
-        </button>
+        </Button>
       </div>
     </aside>
   );

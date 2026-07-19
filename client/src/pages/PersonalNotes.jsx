@@ -1,12 +1,16 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
-import "../styles/pages/Login.css";
+import "../styles/pages/PersonalNotes.css"; // Import the CSS file for styling
 
-export default function MainPage() {
-    return (
-        <div>
-          
-        </div>
-    )
+export default function PersonalNotes() {
+  return (
+    <>
+      <Helmet>
+        <title>Personal Notes</title>
+      </Helmet>
+
+      <div className="personal-notes-page">
+        <h1>Personal Notes Page</h1>
+      </div>
+    </>
+  );
 }

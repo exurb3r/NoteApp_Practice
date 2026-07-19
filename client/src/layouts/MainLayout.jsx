@@ -3,6 +3,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import './MainLayout.css'; // Import the CSS file for styling
 
 export default function MainLayout() {
   return (

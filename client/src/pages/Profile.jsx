@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
 
-export default function CommunityNotes() {
+export default function Profile() {
     return (
         <div>
-          Community Notes Page
+            Profile
         </div>
     )
 }

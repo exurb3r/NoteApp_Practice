@@ -1,55 +1,77 @@
+import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
-import Home from '../pages/PersonalNotes'; 
-import MainLayout from '../layouts/MainLayout'; 
-import MainPage from '../pages/PersonalNotes';
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
 
+import MainLayout from "../layouts/MainLayout";
 
+import PersonalNotes from "../pages/PersonalNotes";
+import CommunityNotes from "../pages/CommunityNotes";
+import Profile from "../pages/Profile";
+import Notifications from "../pages/Notifications";
+import Stats_Activity from "../pages/Stats_Activity";
+
+// Protects all routes below it.
 const ProtectedRoute = () => {
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-  // If authenticated, render the child pages. If not, redirect to login.
+  const isAuthenticated =
+    localStorage.getItem("isAuthenticated") === "true";
+
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
-
 export const router = createBrowserRouter([
-  // --- PUBLIC ROUTES ---
+  // ---------- Public Routes ----------
   {
-    path: '/',
-    element: <Navigate to="/login" replace />, // Redirect root to login automatically
+    path: "/",
+    element: <Navigate to="/login" replace />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login />,
   },
   {
-    path: '/signup',
+    path: "/signup",
     element: <Signup />,
   },
 
-  // --- PROTECTED ROUTES ---
+  // ---------- Protected Routes ----------
   {
-    element: <ProtectedRoute />, // 1st Layer Guard: Checks if logged in
+    element: <ProtectedRoute />, // Authentication guard
+
     children: [
       {
-        element: <MainLayout />, // 2nd Layer Layout: Applies Navbar/Sidebar
+        path: "/noteapp",
+        element: <MainLayout />, // Shared layout (Navbar + Sidebar + Outlet)
+
         children: [
           {
-            path: '/noteapp', 
-            element: <MainPage />,
+            index: true, // Default page: /noteapp
+            element: <PersonalNotes />,
           },
-          
-          // { path: '/profile', element: <Profile /> }
+          {
+            path: "community-notes",
+            element: <CommunityNotes />,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+          {
+            path: "notifications",
+            element: <Notifications />,
+          },
+          {
+            path: "stats-activities",
+            element: <Stats_Activity />,
+          },
         ],
       },
     ],
   },
 
-  // --- FALLBACK ROUTE ---
+  // ---------- Fallback ----------
   {
-    path: '*',
+    path: "*",
     element: <Navigate to="/login" replace />,
   },
 ]);
