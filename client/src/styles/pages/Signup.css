@@ -1,0 +1,144 @@
+/* src/styles/pages/Signup.css */
+
+/* Entire background baseline structure */
+.signup-page {
+    color: #333;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Perfect viewport centering grid alignment wrapper */
+.signup-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0; /* Ensures content doesn't hit mobile display edges */
+}
+
+/* The primary whiteboard data card layout frame */
+.signup-card {
+    width: 100%;
+    min-height: 500px;
+    max-width: 460px; /* Widened to give your horizontal fields room to expand */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Modern fluid soft drop shadow shadow profile */
+    padding: 2.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Text positioning layout */
+.signup-card__header {
+    margin-bottom: 2.5rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-card__header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Body element grouping wrapper styling */
+.signup-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Core form internal component layouts */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Stack flow properties controlling spacing between all inputs */
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+/* Universal text layout configurations for our input nodes */
+.form-input {
+    width: 100%;
+    min-height: 40px; 
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box; /* Crucial structural anchor: locks interior element spacing sizing bounds */
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Active focus state interactive indicator ring colors */
+.form-input:focus {
+    outline: none;
+    border-color: #0076ff;
+    box-shadow: 0 0 0 3px rgba(0, 118, 255, 0.15);
+}
+
+/* --- HORIZONTAL ROW MANAGEMENT FOR PASSWORDS --- */
+.password-row {
+    display: flex;
+    flex-direction: row; /* Aligns contents left-to-right */
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem; /* Interior gaps around the future center button */
+    width: 100%;
+}
+
+/* Instructs password fields to balance out screen real estate equally */
+.password-row .form-input {
+    flex: 1; 
+}
+
+/* Reserves an exact structural zone for your center visibility control toggle */
+.show-btn-placeholder {
+    width: 40px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-actions {
+    margin-top: 0.5rem;
+}
+
+/* Warning alert error text element styles */
+.form-error {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* Primary submission layout buttons configurations */
+.signup-button {
+    width: 100%;
+    padding: 0.8rem;
+    border: none; /* Destroys standard classic browser default aesthetics */
+    border-radius: 20px;
+    background-color: #333; /* Dark baseline color scheme profile */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer; 
+    transition: background-color 0.2s;
+}
+
+/* Interactive click visual animations profiles */
+.signup-button:hover {
+    background-color: #555;
+}

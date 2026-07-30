@@ -1,0 +1,33 @@
+.navbar {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    align-items: center;
+    height: 60px;
+    background-color: #F5F7FA;
+    border-bottom: 1px solid #E5E7EB;
+    border-radius: 20px;
+}
+
+.navbar__title {
+    text-align: center;
+}
+.navbar__menu-btn {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.navbar__menu-btn:hover {
+    background: #f3f4f6;
+}
+.navbar__title {
+    font-size: 20px;
+    font-weight: bold;
+}

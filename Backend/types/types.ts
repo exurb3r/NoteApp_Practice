@@ -1,10 +1,10 @@
 import "express";
-import type { AuthUser } from "./types.verifyJWT"; // adjust path
+import type { JwtUserPayload } from "./types.verifyJWT";
 
 declare global {
   namespace Express {
     interface Request {
-      user?: AuthUser;
+      user?: JwtUserPayload;
     }
   }
 }

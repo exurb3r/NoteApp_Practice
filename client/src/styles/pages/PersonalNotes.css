@@ -1,0 +1,10 @@
+.personal-notes-page {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.personal-notes-page h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}

@@ -1,0 +1,15 @@
+.main-layout {
+    display: flex;
+    flex-direction: Column;
+    height: 100vh;
+}
+
+.main-layout__content {
+    display: flex;      /* <-- This is the important part */
+    flex: 1;
+}
+
+.main-layout__main {
+    flex: 1;
+    padding: 20px;
+}
